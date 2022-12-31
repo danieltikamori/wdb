@@ -1,104 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="git-styles.css" />
-    <title>Git - Github Gitlab</title>
-  </head>
-  <body>
-    <h1>Git Basics</h1>
 
-    <div
-      class="lesson-content max-w-prose mx-auto prose md:prose-lg prose-gray prose-a:text-gold-600 prose-code:bg-gray-100 prose-code:p-1 prose-code:font-normal dark:prose-code:bg-gray-700/40 prose-code:rounded-md break-words line-numbers dark:prose-invert dark:antialiased prose-pre:rounded-xl prose-pre:bg-slate-800 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/70 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 xl:mx-0"
-      data-controller="syntax-highlighting"
-    >
-      <h2>Introduction</h2>
-      <p>Git is a version control system.</p>
-      <p>
-        A <em>save</em> in Git records differences in the files and folders AND
-        keeps a <strong>historical record of each save</strong>.
-      </p>
-      <p>
-        Git allows to push the project to GitHub or others such as: Bitbucket,
-        Beanstalk or Gitlab for sharing and collaboratingwith other developers.
-      </p>
-      <p>
-        ! Read Chapter 1.1 through 1.4 in
-        <a
-          href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control"
-          target="_blank"
-          >this book about version control</a
-        >
-        to learn the differences between local, centralized, and distributed
-        version control systems.
-      </p>
-      <p>
-        ! Take a look at The Odin Project's very own
-        <a href="https://github.com/TheOdinProject/curriculum" target="_blank"
-          >GitHub repository</a
-        >.
-      </p>
-      <h2>Setting up Git on Ubuntu Linux</h2>
-      <h3>Step 1: Install Git</h3>
-      <h4>Update the system</h4>
-      <p>Run these commands to update Linux system:</p>
-      <pre class="line-numbers language-bash" tabindex="0">
-        <code>
-          sudo apt update
-          sudo apt upgrade
-          </code>
-      </pre>
-      <h4>Install Git</h4>
-      <p>
-        You likely have git installed already, but to make sure that we have the
-        most up to date version of git, run the following commands:
-      </p>
-      <pre class="line-numbers language-bash" tabindex="0">
-        <code>
-          sudo add-apt-repository ppa:git-core/ppa
-          sudo apt update
-          sudo apt install git
-        </code>
-      </pre>
-      <h4>Verify version</h4>
-      <pre class="line-numbers language-bash" tabindex="0">
-        <code>
-          git --version
-      </code>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="git.css" />
+  <title>Git - Github GitLab</title>
+</head>
+
+<body>
+  <h1>Git Basics on Linux</h1>
+
+  <div>
+    <h2>Create the Repository</h2>
+    <ol>
+      <li>
+        <p>At GitHub website, create a repository, adding README file.</p>
+      </li>
+      <li>
+        <p>
+          Copy/clone this repository to local machine clicking the green "Code"
+          button. Select ths SSH option and copy the URL below it.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use local machine CL(command line) to create a new directory for the project. Home folder is represented by ~.
+          If not sure if you're in the home folder, type <code>cd ~</code> .
+        <pre>
+          <code>
+            mkdir directoryName
+            cd directoryName/</code>
+          </pre>
+        </p>
+      </li>
+      <li>
+        <p>
+          Now clone your repository from GitHub onto local machine with <code>git clone</code> followed by the URL
+          copied last in the step. Look similar to <code>git clone git@github.com:USER-NAME/REPOSITORY-NAME.git</code>.
+        <pre>
+              <code>
+                git clone git@github.com:USER-NAME/REPOSITORY-NAME.git</code>
+            </pre>
+        </p>
+      </li>
+      <li>
+        <p>
+          That's it! Connected the Github repository to local machine.
+        <pre>
+              <code>
+                git remote -v</code>  // Display the repo URL
+            </pre>
+        </p>
+      </li>
+    </ol>
+    <h2>Use Git Workflow</h2>
+    <ol>
+      <li>
+        <p>
+          Create a new file in the project folder.
+        <pre>
+          <code>
+            touch newfile</code> //edit the newfile to desired filename
+        </pre>
+        </p>
+      </li>
+      <li>
+        <p>Type <code>git status</code> if shown in red, file is not staged.</p>
+      </li>
+      <li>
+        <p>Type <code>git add [filename]</code> adds to the staging area in Git.</p>
+        <p>Think of the staging area as a "waiting room" for the changes until commit them.</p>
+        <p>Type <code>git status</code>. The output shown in green, means it is now in the staging area.</p>
+      </li>
+      <li>
+        <p>Type <code>git commit -m "Add [filename]"</code> and them type <code>git status</code> to see the status.</p>
+      </li>
+      <li>
+        <p>Type <code>git log</code> to see an entry for the recent commit. Author, date, time. If terminal become
+          stuck, press "q" to escape.</p>
+      </li>
+    </ol>
+    <h2>Modify a file or two</h2>
+    <ol>
+      <li>
+        <p>
+          Open the file in the editor of choice. Here we use VS Code by using the command <code>code .</code> inside the
+          repository.
+        </p>
+      </li>
+      <li>
+        <p>
+          Edit the file and save with "Ctrl+S".
+        </p>
+      </li>
+      <li>
+        <p>Add the file to the staging area with <code>git add [filename]</code></p>
+        <p>Use <code>git add .</code> to add all files in the current directory and subsequent directories to the
+          staging area.</p>
+      </li>
+      <li>
+        <p>Finally commit all the files and add a <a href="#Commit-Messages">descriptive commit message</a>.
+        <pre>
+            <code>
+              git commit -m "Here goes the desired message in quotation marks"</code>
+          </pre>
+        Then type <code>git status</code> to see the output.
+        </p>
+      </li>
+      <li>
+        <p>Take a last look at the commit history typing <code>git log</code>.</p>
+      </li>
+    </ol>
+    <h2>Push the work to GitHub</h2>
+    <p>Finally upload the work to the GitHub repository.</p>
+    <ol>
+      <li>
+        <p>Type <code>git push</code> or if have more branches, <code>git push origin main</code> (change arguments if
+          necessary).</p>
+      </li>
+      <li>
+        <p>Type <code>git status</code> to see the status(Optional).</p>
+      </li>
+    </ol>
+    <p><strong>Avoid changes directly via GitHub</strong>, it is advised to make any changes via local files then commit
+      and push using Git commands.</p>
+  </div>
+  <div>
+    <h2>Cheatsheet</h2>
+    <p>Commands related to a remote repository:</p>
+    <pre>
+    <code>git clone git@github.com:USER-NAME/REPOSITORY-NAME.git</code>
+
+    <code>git push or git push origin main (Both accomplish the same goal in this context)</code>
 </pre>
-      <h4>Configure Git and GitHub</h4>
-      <p>
-        If you are privacy conscious, or just don’t want your email address to
-        be publicly available, make sure you tick the two boxes on the Email
-        Settings page after you have signed in.
-      </p>
-      <p>
-        Having these two options enabled will prevent you accidentally exposing
-        your personal email address when working with Git and GitHub.
-      </p>
-      <h4>Setup Git</h4>
-      <p>
-        The commands below will configure Git. Be sure to enter your own
-        information inside the quotes
-        <strong>(but include the quotation marks)</strong>!
-      </p>
-      <pre class="line-numbers language-bash" tabindex="0">
-        <code>
-          git config --global user.name "Your Name"
-          git config --global user.email "yourname@example.com"
-      </code>
-    </pre>
-      <p>
-        If you opted to use the private GitHub email address, the second command
-        will look something like this:
-      </p>
-      <pre class="line-numbers language-bash" tabindex="0">
-        <code>
-          git config --global user.email "123456789+odin@users.noreply.github.com" # Remember to use your own private GitHub email here.
-      </code>
-    </pre>
-    </div>
-  </body>
+    <p>Commands related to the workflow:</p>
+    <pre>
+  <code>
+    git add .
+
+    git commit -m "A message describing what you have done to make this snapshot different"</code>
+</pre>
+    <p>Commands related to checking status or log history</p>
+    <pre>
+  <code>
+    git status
+
+    git log</code>
+</pre>
+    <p>The basic Git syntax is <code>program | action | destination</code>.</p>
+
+    <p>For example,</p>
+
+    <pre>
+<p>
+  <code>git add .</code> is read as <code>git | add | .</code>, where the period represents everything in the current directory;
+  <code>git commit -m "message"</code> is read as <code>git | commit -m | "message"</code>; and
+  <code>git status</code> is read as <code>git | status | (no destination)</code>.
+  </pre>
+    </p>
+    <h2 id="Commit-Messages">Commit Messages</h2>
+    <p>
+      Read this article: <a href="https://cbea.ms/git-commit">How to Write a Git Commit Message</a>, covers the main
+      bases.
+    </p>
+    <ol>
+      <li>Separate subject from body with a blank line - e.g. Fix typo in introduction to user guide</li>
+      <li>Limit the subject line to 50 characters. Hard limit 72, it will truncate with ellipsis if exceed</li>
+      <li>Capitalize the subject line</li>
+      <li>Do not end the subject line with a period</li>
+      <li>Use the imperative mood in the subject line - e.g. Refactor subsystem X for readability, Remove deprecated
+        methods
+        <p><strong>A properly formed Git commit subject line should always be able to complete the following
+            sentence</strong>:</p>
+        <p>If applied, this commit will <em><u>your subject line here</u></em></p>
+        <ul>
+          <li>If applied, this commit will <em>refactor subsystem X for readability</em></li>
+          <li>If applied, this commit will <em>update getting started documentation</em></li>
+          <li>If applied, this commit will <em>remove deprecated methods</em></li>
+          <li>If applied, this commit will <em>release version 1.0.0</em></li>
+          <li>If applied, this commit will <em>merge pull request #123 from user/branch</em></li>
+        </ul>
+      </li>
+      <li>Wrap the body at 72 characters</li>
+      <li>Use the body to explain <em>what</em> and <em>why</em> vs. <em>how</em></li>
+    </ol>
+    <h3>Tips and things to Remember</h3>
+    <ul>
+      <li>Use an active voice: “Fix card generator”</li>
+      <li>Avoid using vague commit messages such as “saved” or “updated”</li>
+      <li>Commit early and often!</li>
+    </ul>
+    <p>Read <a href="https://git-scm.com/book/en/v2" target="_blank">Pro Git book or download for free</a></p>
+    <h2>Git Best Practices</h2>
+    <ul>
+      <li>
+        <p>Atomic commits - changes related only one feature or task of the program. Easy to revert without losing other
+          changes and enables to write better commit messages.</p>
+      </li>
+      <li>
+        <p>Meaningful commit messages - help understand better the changes.</p>
+      </li>
+    </ul>
+    <h2>Changing the Git Commit Message Editor</h2>
+    <p>If you are using Visual Studio Code (and you should be if you’re following this curriculum) and you don’t want to
+      get stuck writing a commit message in Vim because you accidentally used <code>git commit</code> without the
+      message flag (<code>-m</code>), this command will make Visual Studio Code open a new tab with the ability to write
+      your commit message and an optional description below it:
+      <code>git config --global core.editor "code --wait"</code>.</p>
+
+    <p>There will be no confirmation or any output on the terminal after entering this command. To make a commit with
+      Visual Studio Code as the text editor, make sure to use the <code>git commit</code> command without the
+      <code>-m</code> flag. Just type <code>git commit</code> and no message after that. Once you do this, a new tab
+      will open. Now you can write your message, and provide more information if you want, right below it. After typing
+      your commit message, save it and exit the tab.</p>
+
+    <p>With that out of the way, now you can choose to use either <code>git commit -m [your message here]</code> or
+      <code>git commit</code> and enter your message with Visual Studio Code!</p>
+  </div>
+</body>
+
 </html>
