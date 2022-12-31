@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+</head>
+
+<body>
+    <h1>Most used CSS Selectors</h1>
+    <p>More info: <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors</a>
+    </p>
+    <h2>* Universal selector</h2>
+    <p>Used at the top of the css file.</p>
+    <h2>Element selector</h2>
+    <p>h1 {},button {}, h1,h2{} (selects all h1 and h2 elements)</p>
+    <h2># id selector</h2>
+    <p>#idname {}</p>
+    <h2>. class selector</h2>
+    <p>.classname {}</p>
+    <h2>&nbsp;&nbsp;Descendant selector</h2>
+    <p>element1 element 2 {} (e.g. li a {}) - select <strong>all</strong> &lt;a>'s that are nested inside an &lt;li>.
+    </p>
+    <p>.class1 span a - select only &lt;a> inside span inside class1</p>
+    <h2>+ Adjacent selector</h2>
+    <p>Selects only the immediately adjacent element, not Descendant. h1 + p - only paragraphs immediately preceded by
+        h1.</p>
+    <h2>> Direct child selector</h2>
+    <p>Select only the element that are <strong>direct</strong> children of another element. div > li - only li direct
+        children of divs.
+    </p>
+    <h2>Element[Attribute] selector</h2>
+    <p>input[type=text] {} - only attribute type text on input element.</p>
+    <p>a[href*="google"] {} - &lt;a> elements with href containing "google".</p>
+    <p>a[href$=".org"] {} - &lt;a> elements with href ending ".org".</p>
+    <p>a[class~="logo"] {} - &lt;a> elements whose class attribute contains the word "logo". [attr~=value]
+        Represents elements with an attribute name of attr whose value is a whitespace-separated list of words, one of
+        which is exactly value.</p>
+    <p>a[href*="insensitive" i] {} - &lt;a> elements with href containing case insensitive "insensitive".</p>
+    <p>a[href*="CasE" s] {} - &lt;a> elements with href containing case sensitive "CasE".</p>
+    <h2>Pseudo Classes</h2>
+    <p>Keyword added to a selector that specifies a special state of the selected element(s).</p>
+    <p>More info: <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#pseudo-classes_and_pseudo-elements">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#pseudo-classes_and_pseudo-elements</a>
+    </p>
+    <p>Starts with ":"</p>
+    <p>:hover</p>
+    <p>a:hover - selects any &lt;a> element when hovered.</p>
+    <p>button:active - selects active(being clicked) button.</p>
+    <p>.post:nth-of-type(3n) - select every 3rd, 6th, 9th so on class post element.</p>
+    <p>.even:nth-of-type(even) - selects only even element with "even" class.</p>
+    <h2>Pseudo Elements</h2>
+    <p>Starts with "::" + keyword added to a selector that lets you style a specific part of the selected element(s).
+        For example,
+        ::first-line can be used to change the font of the first line of a paragraph.</p>
+    <p>p:selection - selects selected section of paragraph.</p>
+</body>
+
+</html>

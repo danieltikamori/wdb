@@ -1,0 +1,27 @@
+body {
+    font-family: 'open sans', sans-serif;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h2 {
+    font-family: roboto, sans-serif;
+}
+
+#container {
+    background-color: #003049;
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+    border: 5px solid #003049;
+    display: flex;
+    flex-direction: column;
+}
+
+#container div {
+    width: 6em;
+    height: 6em;
+}

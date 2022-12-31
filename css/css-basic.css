@@ -1,0 +1,33 @@
+h2.color {
+    color: red;
+}
+
+h2.background-color {
+    background-color: blueviolet;
+    color: aliceblue;
+}
+
+p.colorparagraph {
+    color: coral;
+    background-color: chartreuse;
+}
+
+.red {
+    color: rgb(255, 0, 0);
+}
+
+.blue {
+    color: rgb(0, 0, 255);
+}
+
+.black {
+    color: rgb(0, 0, 0);
+}
+
+.attention {
+    font-weight: bolder;
+}
+
+.font-family {
+    font-family: fantasy;
+}

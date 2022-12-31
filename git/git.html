@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="git-styles.css" />
+    <title>Git - Github Gitlab</title>
+  </head>
+  <body>
+    <h1>Git Basics</h1>
+
+    <div
+      class="lesson-content max-w-prose mx-auto prose md:prose-lg prose-gray prose-a:text-gold-600 prose-code:bg-gray-100 prose-code:p-1 prose-code:font-normal dark:prose-code:bg-gray-700/40 prose-code:rounded-md break-words line-numbers dark:prose-invert dark:antialiased prose-pre:rounded-xl prose-pre:bg-slate-800 prose-pre:shadow-lg dark:prose-pre:bg-slate-800/70 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-slate-300/10 xl:mx-0"
+      data-controller="syntax-highlighting"
+    >
+      <h2>Introduction</h2>
+      <p>Git is a version control system.</p>
+      <p>
+        A <em>save</em> in Git records differences in the files and folders AND
+        keeps a <strong>historical record of each save</strong>.
+      </p>
+      <p>
+        Git allows to push the project to GitHub or others such as: Bitbucket,
+        Beanstalk or Gitlab for sharing and collaboratingwith other developers.
+      </p>
+      <p>
+        ! Read Chapter 1.1 through 1.4 in
+        <a
+          href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control"
+          target="_blank"
+          >this book about version control</a
+        >
+        to learn the differences between local, centralized, and distributed
+        version control systems.
+      </p>
+      <p>
+        ! Take a look at The Odin Project's very own
+        <a href="https://github.com/TheOdinProject/curriculum" target="_blank"
+          >GitHub repository</a
+        >.
+      </p>
+      <h2>Setting up Git on Ubuntu Linux</h2>
+      <h3>Step 1: Install Git</h3>
+      <h4>Update the system</h4>
+      <p>Run these commands to update Linux system:</p>
+      <pre class="line-numbers language-bash" tabindex="0">
+        <code>
+          sudo apt update
+          sudo apt upgrade
+          </code>
+      </pre>
+      <h4>Install Git</h4>
+      <p>
+        You likely have git installed already, but to make sure that we have the
+        most up to date version of git, run the following commands:
+      </p>
+      <pre class="line-numbers language-bash" tabindex="0">
+        <code>
+          sudo add-apt-repository ppa:git-core/ppa
+          sudo apt update
+          sudo apt install git
+        </code>
+      </pre>
+      <h4>Verify version</h4>
+      <pre class="line-numbers language-bash" tabindex="0">
+        <code>
+          git --version
+      </code>
+</pre>
+      <h4>Configure Git and GitHub</h4>
+      <p>
+        If you are privacy conscious, or just don’t want your email address to
+        be publicly available, make sure you tick the two boxes on the Email
+        Settings page after you have signed in.
+      </p>
+      <p>
+        Having these two options enabled will prevent you accidentally exposing
+        your personal email address when working with Git and GitHub.
+      </p>
+      <h4>Setup Git</h4>
+      <p>
+        The commands below will configure Git. Be sure to enter your own
+        information inside the quotes
+        <strong>(but include the quotation marks)</strong>!
+      </p>
+      <pre class="line-numbers language-bash" tabindex="0">
+        <code>
+          git config --global user.name "Your Name"
+          git config --global user.email "yourname@example.com"
+      </code>
+    </pre>
+      <p>
+        If you opted to use the private GitHub email address, the second command
+        will look something like this:
+      </p>
+      <pre class="line-numbers language-bash" tabindex="0">
+        <code>
+          git config --global user.email "123456789+odin@users.noreply.github.com" # Remember to use your own private GitHub email here.
+      </code>
+    </pre>
+    </div>
+  </body>
+</html>
