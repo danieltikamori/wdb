@@ -10,14 +10,14 @@ const fitBitData = {
   totalMiles: 334.3,
   avgCalorieBurn: 5755,
   workoutsThisWeek: "5 of 7",
-  avgGoodSleep: "2:13",
+  avgGoodSleep: "2:13"
 };
 
 const product = {
   name: "Gummy Bears",
   inStock: true,
   price: 1.99,
-  flavors: ["grape", "apple", "cherry"],
+  flavors: ["grape", "apple", "cherry"]
 };
 
 // Accessing Data out of objects
@@ -56,3 +56,17 @@ midterms.ezra; // undefined
 midterms.ezra = "B+";
 midterms["antonio"] = "A-";
 // midterms {danielle: "A", thomas: "C+", ezra: "B+", antonio: "A-"}
+
+// Some object methods. =>Capitalized Object
+
+// Object method Object.keys(object)
+// Gives the keys in the object
+Object.keys(testScores);
+
+// Object method Object.values(object)
+// Gives the values in the keys
+Object.values(testScores);
+
+// Object method Object.entries(object)
+// Gives the nested array of key-value pairs
+Object.entries(testScores);
