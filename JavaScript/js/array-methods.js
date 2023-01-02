@@ -9,7 +9,7 @@
 //Comes from CS data structures - stacks and queues
 
 let movieLine = [ 'tom', 'nancy', 'pablo', 'oliver'];
-movieLine.shift() // Arguments between parenthesis are unnecessary, as it is a remove method.
+movieLine.shift() // Arguments between parenthesis are unnecessary, as it is a removing method.
 movieLine.push('john'); // Necessary to insert a argument, as it is the value to be inserted/added.
 movieLine.push('david', 'kevin', 'carly');
 movieLine.unshift('VIP');
