@@ -40,7 +40,7 @@ let fullName = firstName + " " + lastName; // "River Phoenix"
 
 // String Methods
 
-variable.method()
+thing.method()
 
 "hello".length; // returns 5
 
