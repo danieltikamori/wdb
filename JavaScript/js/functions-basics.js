@@ -6,7 +6,8 @@
 // Used ALL THE TIME
 
 // Make code easier to understand
-// Methods are technically functions
+// Methods are technically functions, that are objects or simply put, values.
+// There's no need to name the function, but with name is easier to identify and understand the function
 // Functions can call other functions which call other functions...
 
 let die1 = Math.floor(Math.random() * 6) + 1; // Like rolling a dice
