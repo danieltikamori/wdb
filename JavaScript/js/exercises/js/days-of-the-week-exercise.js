@@ -9,10 +9,19 @@
 // returnDay(0) // null
 
 function returnDay(day) {
-    let daysWeek = [null, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    if (day <=0 || day > 7) {
-         return null;
-    } else {
-        return daysWeek[day];
-    }
+  let daysWeek = [
+    null,
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  if (day <= 0 || day > 7) {
+    return null;
+  } else {
+    return daysWeek[day];
+  }
 }
