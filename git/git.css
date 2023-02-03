@@ -1,0 +1,12 @@
+* {
+  font-size: large;
+  font-family: monospace, sans-serif;
+}
+
+code {
+  box-sizing: border-box;
+  font-family: 'Fira Mono', monospace;
+  background-color: #000;
+  color: #63de00;
+  height: auto overflow: scroll;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto+Mono&display=swap"
+        rel="stylesheet">
+    <title>Flexbox flex-wrap</title>
+    <link rel="stylesheet" href="css/flex-wrap.css">
+</head>
+
+<body>
+    <h1>flex-wrap</h1>
+    <p>Affects the main axis. <code>flex-wrap: wrap</code> works when there's no much room for the elements.
+        <code>nowrap</code> is the
+        default, fitting the elements in the available space without breaking line/column.
+    </p>
+
+    <h2>In rows</h2>
+
+    <section id="container">
+        <section class="center" class="row">
+            <div style="background-color: #80ffdb;">center</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="flex-start" class="row">
+            <div style="background-color: #80ffdb;">flex-start</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="flex-end" class="row">
+            <div style="background-color: #80ffdb;">flex-end</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="space-between" class="row">
+            <div style="background-color: #80ffdb;">space-between</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="space-around" class="row">
+            <div style="background-color: #80ffdb;">space-around</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="space-evenly" class="row">
+            <div style="background-color: #80ffdb;">space-evenly</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+    </section>
+    <br>
+    <br>
+    <hr>
+    <h2>In columns</h2>
+    <section id="containercolumns">
+        <section class="center" class="column">
+            <div style="background-color: #80ffdb;">center</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="flex-start" class="column">
+            <div style="background-color: #80ffdb;">flex-start</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="flex-end" class="column">
+            <div style="background-color: #80ffdb;">flex-end</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="space-between" class="column">
+            <div style="background-color: #80ffdb;">space-between</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="space-around" class="column">
+            <div style="background-color: #80ffdb;">space-around</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+        <section class="space-evenly" class="column">
+            <div style="background-color: #80ffdb;">space-evenly</div>
+            <div style="background-color: #64dfdf;"></div>
+            <div style="background-color: #48bfe3;"></div>
+            <div style="background-color: #5390d9;"></div>
+            <div style="background-color: #6930c3;"></div>
+        </section>
+    </section>
+</body>
+
+</html>

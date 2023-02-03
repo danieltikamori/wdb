@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables - organizing data</title>
+</head>
+
+<body>
+    <h1>Tables - for data</h1>
+    <p>Used to organizing data, not a good practice use to format pages.</p>
+    <p>Create table using <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>to create a row,
+        <code>&lt;th&gt;</th></code> to create a header and <code>&lt;td&gt;</code> to create a data cell.
+    </p>
+    <h3>Example:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Graduate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Arthur</td>
+                <td>34</td>
+                <td>Male</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Anna</td>
+                <td>25</td>
+                <td>Female</td>
+                <td>Yes</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    Table Footer
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <p>There's also <code>thead</code>, <code>tbody</code> and <code>tfoot</code> to make more readable.</p>
+    <h2><code>rowspan</code> and <code>colspan</code></h2>
+    Make a cell occupy a determined number of spaces, row or column.
+
+    <h3>Example:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Name</th>
+                <!-- Takes 2 rows spaces to allow a new row for Associate and Bachelor columns -->
+                <th rowspan="2">Age</th>
+                <th rowspan="2">Gender</th>
+                <th colspan="2
+                ">Graduation</th> <!-- Takes 2 columns(Associate and Bachelor)-->
+                <th>AWS Certification</th>
+            </tr>
+            <tr>
+                <th>Associate</th>
+                <th>Bachelor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Arthur</td>
+                <td>34</td>
+                <td>Male</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Anna</td>
+                <td>25</td>
+                <td>Female</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    Table Footer
+                </td>
+                <td>Not much used</td>
+                <td>But good to know</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
