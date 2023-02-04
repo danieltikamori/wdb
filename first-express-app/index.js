@@ -37,6 +37,15 @@ app.get("/cats", (request, response) => {
 app.get("/dogs", (request, response) => {
   response.send("Woof!");
 });
+
+app.get("/search", (request, response) => {
+  const { q } = request.query;
+  if (!q) {
+    response.send("Nothing found if nothing searched ;)");
+  }
+  response.send(`<h1> Search results for: ${q}</h1>`);
+});
+
 //* means everything. Commonly used for generic response on unknown/inexistent path. Put in the end or otherwise may run when it is not supposed to run(will ignore valid paths).
 app.get("*", (request, response) => {
   response.send("I don't know that path / or inexistent");
