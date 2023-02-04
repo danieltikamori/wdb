@@ -1,12 +1,33 @@
+const { response } = require("express");
 const express = require("express");
 const app = express();
 // console.dir(app);
 
-app.use((request, response) => {
-  console.log("We got a new request!");
-  // response.send("Hello, we got your request!");
-  // response.send({ color: "red" });
+// Commonly uses (req, res)
+// app.use((request, response) => {
+//   console.log("We got a new request!");
+//   // response.send("Hello, we got your request!");
+//   // response.send({ color: "red" });
+//   response.send("<h1>This is the webpage through js!</h1>");
+// });
+app.get("/", (response, request) => {
   response.send("<h1>This is the webpage through js!</h1>");
+});
+
+app.post("/cats", (request, response) => {
+  response.send("POST request to /cats! This is different than a GET request!");
+});
+
+app.get("/cats", (request, response) => {
+  response.send("Meow!");
+});
+
+app.get("/dogs", (request, response) => {
+  response.send("Woof!");
+});
+//* means everything. Used for generic response on unknown/inexistent path. Put in the end or otherwise may run when it is not supposed to run(will ignore valid paths).
+app.get("*", (request, response) => {
+  response.send("I don't know that path / or inexistent");
 });
 
 app.listen(8080, () => {
