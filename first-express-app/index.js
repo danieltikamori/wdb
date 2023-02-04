@@ -10,8 +10,20 @@ const app = express();
 //   // response.send({ color: "red" });
 //   response.send("<h1>This is the webpage through js!</h1>");
 // });
-app.get("/", (response, request) => {
+app.get("/", (request, response) => {
   response.send("<h1>This is the webpage through js!</h1>");
+});
+
+app.get("/r/:subreddit", (request, response) => {
+  const { subreddit } = request.params;
+  response.send(`<h1>Browsing ${subreddit} subreddit</h1>`);
+});
+
+app.get("/r/:subreddit/:postId", (request, response) => {
+  const { subreddit, postId } = request.params;
+  response.send(
+    `<h1>Viewing post ID ${postId} on the ${subreddit} subreddit</h1>`
+  );
 });
 
 app.post("/cats", (request, response) => {
@@ -25,7 +37,7 @@ app.get("/cats", (request, response) => {
 app.get("/dogs", (request, response) => {
   response.send("Woof!");
 });
-//* means everything. Used for generic response on unknown/inexistent path. Put in the end or otherwise may run when it is not supposed to run(will ignore valid paths).
+//* means everything. Commonly used for generic response on unknown/inexistent path. Put in the end or otherwise may run when it is not supposed to run(will ignore valid paths).
 app.get("*", (request, response) => {
   response.send("I don't know that path / or inexistent");
 });
