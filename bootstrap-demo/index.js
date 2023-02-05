@@ -1,0 +1,37 @@
+const express = require("express");
+const app = express();
+const path = require("path");
+const redditdata = require("./data.json");
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "/views"));
+
+app.get("/", (req, res) => {
+  res.render("home", { pageTitle: "Home" }); // as the the view and ejs was previously set, don't need to specify the complete path
+});
+
+app.get("/cats", (req, res) => {
+  const cats = ["Blue", "Rocket", "Monty", "Stephanie", "Winston"];
+  res.render("cats", { allCats: cats, pageTitle: "All the Cats!" });
+});
+
+app.get("/r/:subreddit", (req, res) => {
+  const { subreddit } = req.params;
+  const redditData = redditdata[subreddit];
+  if (redditData) {
+    res.render("subreddit", { ...redditData, pageTitle: subreddit });
+  } else {
+    res.render("notfound", { subreddit, pageTitle: `Not found ${subreddit}` });
+  }
+});
+
+app.get("/rand", (req, res) => {
+  const randomNum = Math.floor(Math.random() * 10 + 1);
+  res.render("random", { randomNum: randomNum, pageTitle: "Random numbers" });
+});
+
+app.listen(3000, () => {
+  console.log("Listening on port 3000");
+});
