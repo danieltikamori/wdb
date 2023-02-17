@@ -98,6 +98,9 @@ It will create the collection automatically if it doesn't exists.
 To see the collections created, use show collections:
 `show collections`
 
+Viewing databases on MongoDB:  
+`show dbs`
+
 To see the collection content:  
 `db.[collectionName].find()`
 
@@ -418,22 +421,38 @@ If you need full-fledged validation, use the traditional approach of first retri
 
 `Model.remove()` - deprecated  
 Example:
-`Movie.remove({title: "Amelie"}).then(msg => console.log(msg))`  
+`Movie.remove({title: "Amelie"}).then(msg => console.log(msg))`
 
 `Model.deleteOne()`  
 Deletes a single document from the database.
-    
+
     Example:
     Movie.deleteOne({title: "Meet the Spartans"}).then(msg => console.log(msg))
 
 `Model.deleteMany()`  
 Deletes multiple documents from the database.
-    
+
     Example:
     Movie.deleteMany({year: {$gte: 1999}}).then(msg => console.log(msg))
 
 `Movie.findOneAndDelete()`  
-Gives document back after deletion.  
+Gives document back after deletion.
 
 ### Mongoose Schema validations
 
+Use the `required:` boolean property to validate data.  
+Example:
+
+    const productSchema = new mongoose.Schema({
+        name: {
+            type: String,
+            required: true,
+        },
+        price: {
+            type: Number,
+        }
+    });
+
+In the case above, the name is required to be filled, the price is optional.
+
+Another important thing is that trying to insert properties and values outside the determined schema won't work, **won't be included in the real collection** also it won't log errors.
