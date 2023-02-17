@@ -84,9 +84,9 @@ Remove MongoDB databases and log files.
 
 Refer: https://www.mongodb.com/docs/manual/reference/method/
 
-Creating a DB:
+Creating a DB(collection):
 
-> `use [dbname]`
+> `use [collectionName]`
 
 Then a collection should be created. Uses objects and if want to create many entries, it must be a array`[{data0}, {data1}, {data2}]`. Use these methods: `insertOne()`, `insertMany()`.
 
@@ -264,3 +264,176 @@ Refer: https://mongoosejs.com/docs/
 ==First be sure you have MongoDB and Node.js installed.==  
 In the project folder:  
 `npm i mongoose`
+
+### Saving a document in a collection with Mongoose
+
+Usually at node we run `.load index.js`,
+but sometimes bugs occur, so:
+
+> Instead of using .load index.js inside of the node shell, use the command:  
+> `node -i -e "$(< index.js)"` **in the system terminal (outside of the node shell**, just be sure that you first change directories into the folder containing the index.js file) — **this will load the file and start the node shell with this one command instead, and then it should work**. Be sure to type out the command exactly as shown above.
+
+Then you can save a document using this command:  
+`[documentName].save()`
+
+### Finding / querying with Mongoose
+
+Refer: https://mongoosejs.com/docs/queries.html
+
+    Model.deleteMany()
+    Model.deleteOne()
+    Model.find()
+    Model.findById()
+    Model.findByIdAndDelete()
+    Model.findByIdAndRemove()
+    Model.findByIdAndUpdate()
+    Model.findOne()
+    Model.findOneAndDelete()
+    Model.findOneAndRemove()
+    Model.findOneAndReplace()
+    Model.findOneAndUpdate()
+    Model.replaceOne()
+    Model.updateMany()
+    Model.updateOne()
+
+A mongoose query can be executed in one of two ways. First, if you pass in a callback function, Mongoose will execute the query asynchronously and pass the results to the callback.
+
+A query also has a .then() function, and thus can be used as a promise.
+
+Much similar to mongoDB. E.g.:  
+`Movie.find({year: {$gte: 2015}}).then(data =>console.log(data))`
+
+### Updating with Mongoose
+
+Refer: https://mongoosejs.com/docs/api.html#model_Model-updateMany
+
+Model.update()  
+Updates one document in the database without returning it.  
+**This method is deprecated**
+
+`Model.updateMany()`  
+Same as update(), except MongoDB will update all documents that match filter (as opposed to just the first one) regardless of the value of the multi option.
+
+Note updateMany will not fire update middleware. Use pre('updateMany') and post('updateMany') instead.
+
+Example:
+
+      const res = await Person.updateMany({ name: /Stark$/ }, { isDeleted: true });
+      res.matchedCount; // Number of documents matched
+      res.modifiedCount; // Number of documents modified
+      res.acknowledged; // Boolean indicating everything went smoothly.
+      res.upsertedId; // null or an id containing a document that had to be upserted.
+      res.upsertedCount; // Number indicating how many documents had to be upserted. Will either be 0 or 1.
+
+This function triggers the following middleware.
+
+    updateMany()
+
+On Node:  
+`Movie.updateMany({title: {$in: ["Amadeus", "Stand by me"]}}, {score: 10}). then(res => console.log(res)`  
+Queries for documents that match the filter, update score to 10, then return result.
+
+`Model.updateOne()`
+
+Same as update(), except it does not support the multi or overwrite options.
+
+    MongoDB will update only the first document that matches filter regardless of the value of the multi option.
+    Use replaceOne() if you want to overwrite an entire document rather than using atomic operators like $set.
+
+Example:
+
+      const res = await Person.updateOne({ name: 'Jean-Luc Picard' }, { ship: 'USS Enterprise' });
+      res.matchedCount; // Number of documents matched
+      res.modifiedCount; // Number of documents modified
+      res.acknowledged; // Boolean indicating everything went smoothly.
+      res.upsertedId; // null or an id containing a document that had to be upserted.
+      res.upsertedCount; // Number indicating how many documents had to be upserted. Will either be 0 or 1.
+
+This function triggers the following middleware.
+
+    updateOne()
+
+On Node:  
+`Movie.updateOne({title: "Amadeus"}, {year: 1984}).then(res => console.log(res))`
+Queries for a document with title Amadeus, update year to 1984, then prints the result.
+
+`Model.findOneAndUpdate()`
+
+Issues a mongodb findAndModify update command.
+
+Finds a matching document, updates it according to the update arg, passing any options, and returns the found document (if any) to the callback. The query executes if callback is passed else a Query object is returned.
+
+By default prints the old version of document, although actually updated it. Use the `new: true` to return the updated version of document.
+
+      A.findOneAndUpdate(conditions, update, options, callback) // executes
+      A.findOneAndUpdate(conditions, update, options)  // returns Query
+      A.findOneAndUpdate(conditions, update, callback) // executes
+      A.findOneAndUpdate(conditions, update)           // returns Query
+      A.findOneAndUpdate()                             // returns Query
+
+`Movie.findOneAndUpdate({title: "The Iron Giant"}, {score: 7.8}, {new: true}).then(m => console.log(m))`  
+Queries a document where title is The Iron Giant, updates its score to 7.8, returns the new values instead of the default old values.
+
+`Model.findByIdAndUpdate()`
+**Very Important**  
+Used in applications
+Issues a mongodb findAndModify update command by a document's \_id field. findByIdAndUpdate(id, ...) is equivalent to findOneAndUpdate({ \_id: id }, ...).
+
+Finds a matching document, updates it according to the update arg, passing any options, and returns the found document (if any) to the callback. The query executes if callback is passed.
+
+This function triggers the following middleware.
+
+    findOneAndUpdate()
+
+Example:
+
+      A.findByIdAndUpdate(id, update, options, callback) // executes
+      A.findByIdAndUpdate(id, update, options)  // returns Query
+      A.findByIdAndUpdate(id, update, callback) // executes
+      A.findByIdAndUpdate(id, update)           // returns Query
+      A.findByIdAndUpdate()                     // returns Query
+
+Note:
+
+All top level update keys which are not atomic operation names are treated as set operations:
+Example:
+
+      Model.findByIdAndUpdate(id, { name: 'jason bourne' }, options, callback)
+
+      // is sent as
+      Model.findByIdAndUpdate(id, { $set: { name: 'jason bourne' }}, options, callback)
+
+This helps prevent accidentally overwriting your document with { name: 'jason bourne' }. To prevent this behaviour, see the overwrite option
+Note:
+
+findOneAndX and findByIdAndX functions support limited validation. You can enable validation by setting the runValidators option.
+
+If you need full-fledged validation, use the traditional approach of first retrieving the document.
+
+      const doc = await Model.findById(id)
+      doc.name = 'jason bourne';
+      await doc.save();
+
+### Deleting with Mongoose
+
+`Model.remove()` - deprecated  
+Example:
+`Movie.remove({title: "Amelie"}).then(msg => console.log(msg))`  
+
+`Model.deleteOne()`  
+Deletes a single document from the database.
+    
+    Example:
+    Movie.deleteOne({title: "Meet the Spartans"}).then(msg => console.log(msg))
+
+`Model.deleteMany()`  
+Deletes multiple documents from the database.
+    
+    Example:
+    Movie.deleteMany({year: {$gte: 1999}}).then(msg => console.log(msg))
+
+`Movie.findOneAndDelete()`  
+Gives document back after deletion.  
+
+### Mongoose Schema validations
+
